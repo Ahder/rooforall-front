@@ -1,0 +1,10 @@
+.Background {
+    background-image: url(../styles/images/or_67ba5e873f2e42e791ef1482ed1a93b4.jpg);
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: 1;
+    padding-bottom: 100%;
+}
+
