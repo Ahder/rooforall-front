@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9bd4f5-0eee-4f10-852e-3d6130d4b009" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +78,7 @@
       <workItem from="1581584823711" duration="290000" />
       <workItem from="1582276382280" duration="168000" />
       <workItem from="1582277634287" duration="679000" />
-      <workItem from="1585296490840" duration="1414000" />
+      <workItem from="1585296490840" duration="2369000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1582276832670</created>
@@ -91,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582276832670</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit for proof ;)">
+      <created>1585298275800</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585298275800</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,17 +102,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Commit for proof ;)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit for proof ;)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="328" y="133" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582276485660">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="133" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1582276485660" />
-    <state x="37" y="0" key="CommitChangelistDialog2" timestamp="1582276831670">
+    <state x="37" y="23" width="1206" height="733" key="CommitChangelistDialog2" timestamp="1585298275240">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="37" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1582276831670" />
+    <state x="37" y="23" width="1206" height="733" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1585298275240" />
+    <state x="128" y="69" key="DiffContextDialog" timestamp="1585298209208">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="128" y="69" key="DiffContextDialog/0.0.1280.800@0.0.1280.800" timestamp="1585298209208" />
     <state width="1237" height="193" key="GridCell.Tab.0.bottom" timestamp="1585296646807">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -134,10 +142,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="171" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1582277596766" />
-    <state x="240" y="136" key="Vcs.Push.Dialog.v2" timestamp="1582277090550">
+    <state x="240" y="136" key="Vcs.Push.Dialog.v2" timestamp="1585298278868">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1582277090550" />
+    <state x="240" y="136" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1585298278868" />
     <state x="276" y="148" width="727" height="504" key="find.popup" timestamp="1582276733261">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
