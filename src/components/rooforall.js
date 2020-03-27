@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import HeaderComponent from './HeaderComponent/HeaderComponent';
 import SignIn from './AuthenticationForm/SignIn/SignIn';
 import "./rooforall.css";
@@ -7,6 +7,7 @@ import LogoutComponent from "./AuthenticationForm/Logout/Logout";
 import Testshow from "./TestShow/Testshow";
 import AuthenticationService from '../Service/AuthenticationService';
 import HomePage from './Home/homePage';
+import NotFound from './ErrorPage/notFound';
 
 
 
@@ -33,31 +34,26 @@ class AuthenticatedRoute extends React.Component {
     }
 }
 
-class Rooforall extends React.Component {
+function Rooforall (){
 
-    constructor(props){
-    super(props);
-    this.state={
-      redirect: false,
-    }
-  }
+    const [isLog, setLog] = useState();
 
-    render(){
-        return(
-            <div className="Background">
 
-                <Router>
-                    <HeaderComponent/>
-                    <Switch>
-                        <Route path="/" exact component={SignIn} />
-                        <Route path="/home" exact component={HomePage} />
-                        <Route path="/login" exact component={SignIn} />
-                        <Route path="/testshow" exact component={Testshow} />
-                    </Switch>
-                </Router>
-            </div>
-        )
-    }
+    return(
+        <div className="Background">
+            <Router>
+                <HeaderComponent/>
+                <Switch>
+                    <Route path="/" exact component={HomePage} />
+                    <Route path="/signin" exact >
+                        <SignIn handleLog={setLog} />
+                    </Route>
+                    <Route path="/testshow" exact component={Testshow} />
+                    <Route path="*" component={NotFound} />
+                </Switch>
+            </Router>
+        </div>
+    )
 }
 
 export default Rooforall;
