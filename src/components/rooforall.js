@@ -36,19 +36,24 @@ class AuthenticatedRoute extends React.Component {
 
 function Rooforall (){
 
-    const [isLog, setLog] = useState();
-
+    const [isLog, setLog] = useState(false);
 
     return(
         <div className="Background">
             <Router>
-                <HeaderComponent/>
+                <HeaderComponent isLog = {isLog}/>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
+                    
                     <Route path="/signin" exact >
                         <SignIn handleLog={setLog} />
                     </Route>
-                    <Route path="/testshow" exact component={Testshow} />
+
+                    <Route path="/testshow" exact>
+                        <Testshow isLog={isLog}/>
+                    </Route>
+                    <Route path="/logout" exact component={LogoutComponent}/>
+
                     <Route path="*" component={NotFound} />
                 </Switch>
             </Router>

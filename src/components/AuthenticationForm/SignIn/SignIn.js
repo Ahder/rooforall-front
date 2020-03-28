@@ -15,6 +15,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import AuthenticationService from "../../../Service/AuthenticationService";
 import axios from 'axios';
+import { Redirect, useHistory } from 'react-router-dom';
+import Testshow from '../../TestShow/Testshow';
+
+
 
 const API_URL = 'http://localhost:8081';
 
@@ -54,16 +58,15 @@ function Copyright() {
   }));
   
   
-  export default function SignIn() {
+  export default function SignIn(props) {
     const classes = useStyles();
+    let history = useHistory();
 
-    const [isAuthenticated, setisAuthenticated] = useState(false)
+    const [isLogged, setisLogged] = useState(true);
     const [username, setUsername]  = useState("oussama");
     const [password, setPassword]  = useState("oussama");
     const [hasLoginFailed, sethasLoginFailed]  = useState(false);
     const [showSuccessMessage, setshowSuccessMessage]  = useState(false);
-
-
 
 
     const handleChangeUsername = (event) => {
@@ -75,26 +78,27 @@ function Copyright() {
     }
     
     const loginClicked = async () => {
+      let isConnected  = await AuthenticationService.executeJwtAuthenticationService(username, password) || false;
       console.log(username+" "+password);
-  
-      let isCont = await AuthenticationService.executeJwtAuthenticationService(username, password) || false;
-      console.log(isCont);
-      /*
-      AuthenticationService
-      .executeJwtAuthenticationService(username, password)
-      .then(() => {
-          //AuthenticationService.registerSuccessfulLogin(username, password)
-          this.props.history.push(`/testshow`);
-          isAuthenticated = true;
-      }).catch(() => {
-          console.log("---------> ERROR");
-          setshowSuccessMessage (false);
-          sethasLoginFailed (false);
-      })*/
+      console.log("===> isConnected is "+isConnected);
+      //setisLogged(isConnected)
+      props.handleLog(isConnected);
+      return isConnected ? setisLogged(true) : setisLogged(false) ;
+
+    }
+
+    const renderRedirect = () => {
       
+      if (isLogged === true) {
+        console.log("logged");
+        history.push("/testshow");
+      }else {
+        console.log("Not logged");
+        return null;
+      }
     }
     
-
+    
     return (
         <div className="Signin">
             <Container className="container" component="main" maxWidth="xs">
@@ -153,7 +157,10 @@ function Copyright() {
                     variant="contained"
                     color="primary"
                     className={classes.submit}
-                    onClick={loginClicked}
+                    onClick={() => {
+                      loginClicked();
+                      renderRedirect();
+                    }}
                   >
                   Sign In
                   </Button>

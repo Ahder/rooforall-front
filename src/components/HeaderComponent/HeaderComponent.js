@@ -5,7 +5,7 @@ import AuthenticationService from '../../Service/AuthenticationService';
 class HeaderComponent extends React.Component {
 
     render() {
-        const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+        const isUserLoggedIn = this.props.isLog;
 
         return (
             <header>
