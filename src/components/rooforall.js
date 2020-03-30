@@ -45,14 +45,14 @@ function Rooforall (){
                 <Switch>
                     <Route path="/" exact component={HomePage} />
                     
-                    <Route path="/signin" exact >
+                    <Route path="/signin"  >
                         <SignIn handleLog={setLog} />
                     </Route>
 
-                    <Route path="/testshow" exact>
+                    <Route path="/testshow" >
                         <Testshow isLog={isLog}/>
                     </Route>
-                    <Route path="/logout" exact component={LogoutComponent}/>
+                    <Route path="/logout" component={LogoutComponent}/>
 
                     <Route path="*" component={NotFound} />
                 </Switch>

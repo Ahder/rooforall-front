@@ -94,7 +94,6 @@ function Copyright() {
         history.push("/testshow");
       }else {
         console.log("Not logged");
-        return null;
       }
     }
     
