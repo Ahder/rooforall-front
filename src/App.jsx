@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import Register from './pages/register/Register';
 
 function App() {
   return (
-    <div>
-      <p>Hello</p>
-    </div>
+    <>
+      <Register />
+    </>
   );
 }
 
