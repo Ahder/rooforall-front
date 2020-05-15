@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Register.css';
+import logo from '../../assets/images/undraw.svg';
 import UserProvider from '../../providers/api/users/UserProvider';
 
 const errorHandler = require('./register-utils');
@@ -15,21 +16,15 @@ export default class Register extends Component {
   }
 
   handlerUserName = (event) => {
-    const { userName } = this.state;
     this.setState({ userName: event.target.value });
-    console.log(userName);
   };
 
   handlerUserEmail = (event) => {
-    const { userEmail } = this.state;
     this.setState({ userEmail: event.target.value });
-    console.log(userEmail);
   };
 
   handlerUserPassword = (event) => {
-    const { userPassword } = this.state;
     this.setState({ userPassword: event.target.value }, () => {});
-    console.log(userPassword);
   };
 
   registerUser = async (event) => {
@@ -40,28 +35,70 @@ export default class Register extends Component {
 
     switch (response.status) {
       case errorHandler.OK:
-        console.log(response.data);
         break;
 
       case errorHandler.BAD_REQUEST:
-        throw { message: 'Erreur de contenu' };
         break;
 
       default:
-        console.log('Nothing');
     }
   };
 
   render() {
+    const titleRegister = " Je m'inscris";
     return (
-      <div className="form-input">
-        <form onSubmit={this.registerUser}>
-          <input onChange={this.handlerUserEmail} type="email" name="" id="input-email" />
-          <input type="text" name="" id="" onChange={this.handlerUserName} />
-          <input type="text" name="" id="" onChange={this.handlerUserPassword} />
-          <button type="submit">Signup</button>
-        </form>
-      </div>
+      <>
+        <div className="some-page-wrapper">
+          <div className="row">
+            <div className="column">
+              <div className="blue-column">
+                <form onSubmit={this.registerUser}>
+                  <div className="all-input">
+                    <h2>
+                      Bienvenue sur <span className="title-color">RooforAll</span>
+                    </h2>
+                    <input
+                      placeHolder="Entrez votre adresse mail"
+                      onChange={this.handlerUserEmail}
+                      type="text"
+                      name="email"
+                      id="email-input"
+                    />
+
+                    <input
+                      placeHolder="Entrez votre nom d'utilisateur"
+                      type="text"
+                      name=""
+                      id=""
+                      onChange={this.handlerUserName}
+                    />
+                    <input
+                      placeholder="Entrez votre mot de passe"
+                      type="text"
+                      name=""
+                      id="password-input"
+                      onChange={this.handlerUserPassword}
+                    />
+                  </div>
+                  <button className="btn-register" type="submit">
+                    {titleRegister}
+                  </button>
+                  <div className="btn-login">
+                    <a href="gg">Vous avez déjà un compte?</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="column">
+              <div className="green-column">
+                <div className="register-logo">
+                  <img src={logo} alt="register-logo" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
