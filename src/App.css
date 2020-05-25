@@ -1,0 +1,13 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  border-radius: 2px;
+  color:#00bfa6;
+}

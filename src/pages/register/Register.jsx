@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Register.css';
-import logo from '../../assets/images/undraw.svg';
+import './Register.scss';
+import logo from '../../assets/images/registerSplash.svg';
 import UserProvider from '../../providers/api/users/UserProvider';
 
 const errorHandler = require('./register-utils');

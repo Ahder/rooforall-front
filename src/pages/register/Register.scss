@@ -1,0 +1,134 @@
+/* .form-input {
+  display: block;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-top: 30px;
+  width: 100px;
+} */
+
+.form-input {
+  background-color: #29264e;
+  width: 100px;
+}
+
+.register-logo {
+  position: relative;
+  display: flex;
+  text-align: center;
+}
+
+h2 {
+  color: white;
+  font-weight: 800;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+form {
+  margin-top: 130px;
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 40%;
+  padding: 15px;
+  margin: 50px auto;
+  text-align: center;
+  color: #29264e;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  background:#ddd;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.btn-register {
+  margin-top: 50px;
+  background-color: #00bfa6;
+  border-radius: 25px;
+  width: 350px;
+  height: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.btn-register:focus {
+  outline: none;
+}
+
+
+.btn-login {
+  margin-top: 70px;
+  
+ 
+
+  text-align: center;
+  color: #00bfa6;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a:link {
+  color: white;
+  font-weight: 600;
+
+}
+
+a:hover {
+  color: #00bfa6;
+}
+a:visited {
+  color: white;
+}
+
+
+::placeholder {
+  color: #29264e;
+}
+
+.some-page-wrapper {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.blue-column {
+  background-color: #29264e;
+  height: 800px;
+  width: 500px;
+}
+.green-column {
+  height: 100px;
+  width: 400px;
+}
+
+.title-color {
+  color: #00bfa6;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 800;
+
+}
