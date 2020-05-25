@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './Register.scss';
+import { withRouter } from 'react-router-dom';
 import logo from '../../assets/images/registerSplash.svg';
 import UserProvider from '../../providers/api/users/UserProvider';
 
 const errorHandler = require('./register-utils');
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,20 +29,14 @@ export default class Register extends Component {
   };
 
   registerUser = async (event) => {
+    const { history } = this.props;
     const { userName, userEmail, userPassword } = this.state;
     event.preventDefault();
 
     const response = await UserProvider(userName, userPassword, userEmail);
-
-    switch (response.status) {
-      case errorHandler.OK:
-        break;
-
-      case errorHandler.BAD_REQUEST:
-        break;
-
-      default:
-    }
+    console.log(response.data.username);
+    console.log(this.props);
+    history.push('/home', response.data.username);
   };
 
   render() {
@@ -55,10 +50,11 @@ export default class Register extends Component {
                 <form onSubmit={this.registerUser}>
                   <div className="all-input">
                     <h2>
-                      Bienvenue sur <span className="title-color">RooforAll</span>
+                      Bienvenue sur
+                      <span className="title-color">RooforAll</span>
                     </h2>
                     <input
-                      placeHolder="Entrez votre adresse mail"
+                      placeholder="Entrez votre adresse mail"
                       onChange={this.handlerUserEmail}
                       type="text"
                       name="email"
@@ -66,7 +62,7 @@ export default class Register extends Component {
                     />
 
                     <input
-                      placeHolder="Entrez votre nom d'utilisateur"
+                      placeholder="Entrez votre nom d'utilisateur"
                       type="text"
                       name=""
                       id=""
@@ -102,3 +98,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default withRouter(Register);

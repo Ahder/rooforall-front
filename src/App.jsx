@@ -10,8 +10,8 @@ function App() {
     <div className="app-class">
       <Header />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/register" component={Register} />
+        <Route exact path="/register" component={Register} />
+        <Route path="/home" component={Home} />
       </Switch>
     </div>
   );
