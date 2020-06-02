@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Register.scss';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { register } from '../../providers/api/users/UserProvider';
 
 const errorHandler = require('./register-utils');
@@ -79,7 +79,7 @@ class Register extends Component {
                     {titleRegister}
                   </button>
                   <div className="btn-login">
-                    <a href="gg">Vous avez déjà un compte?</a>
+                    <Link to="/login">Vous avez deja un compte?</Link>
                   </div>
                 </form>
               </div>
