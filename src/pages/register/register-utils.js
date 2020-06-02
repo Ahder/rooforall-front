@@ -1,0 +1,9 @@
+const STATUS = {
+  OK: 200,
+  BAD_REQUEST: 400,
+  ERROR_SERVER: 500,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+};
+
+module.exports = STATUS;
