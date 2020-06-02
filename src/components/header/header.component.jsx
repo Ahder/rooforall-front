@@ -1,26 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/images/logoRooforAll.svg';
+import logo from '../../assets/images/logoRooforAll.svg';
 
 import './header.styles.scss';
 
 const Header = () => (
   <div className="header">
     <Link className="logo-container" to="/">
-      <Logo className="logo" />
+      <img className="logo" alt="home" src={logo} />
     </Link>
+    <span>RooforAll</span>
+
+    <h3>Je choisi où j'habite</h3>
+    <h4>Premiere agence de logement pour etudiants etrangers</h4>
+
     <div className="options">
-      <Link className="option" to="/home">
-        ACCUEIL
-      </Link>
+      <Link className="option" to="/home" />
       <Link className="option" to="/dossiers">
-        MES DOSSIERS
+        Contacts
       </Link>
       <Link className="option" to="/aboutUs">
-        A PROPOS DE NOUS
+        Connexion
       </Link>
-      <Link className="option" to="/profile">
-        MON PROFIL
+      <Link className="option" to="/register">
+        Inscription
       </Link>
     </div>
   </div>
