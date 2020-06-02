@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import './Register.scss';
+import './login.styles.scss';
 import { withRouter } from 'react-router-dom';
-import { register } from '../../providers/api/users/UserProvider';
+import { login } from '../../providers/api/users/UserProvider';
 
-const errorHandler = require('./register-utils');
-
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: '',
       userEmail: '',
-      userPassword: '',
     };
   }
 
@@ -19,47 +16,35 @@ class Register extends Component {
     this.setState({ userName: event.target.value });
   };
 
-  handlerUserEmail = (event) => {
-    this.setState({ userEmail: event.target.value });
-  };
-
   handlerUserPassword = (event) => {
     this.setState({ userPassword: event.target.value }, () => {});
   };
 
-  registerUser = async (event) => {
+  loginUser = async (event) => {
     const { history } = this.props;
-    const { userName, userEmail, userPassword } = this.state;
+    const { userName, userPassword } = this.state;
     event.preventDefault();
-
-    const response = await register(userName, userPassword, userEmail);
-    console.log(response.data.username);
+    console.log(userName, userPassword);
+    const response = await login(userName, userPassword);
+    console.log(response.data);
     console.log(this.props);
     history.push('/home', response.data.username);
   };
 
   render() {
-    const titleRegister = " Je m'inscris";
+    const titleLogin = ' Je me connecte';
     return (
       <>
         <div className="some-page-wrapper">
           <div className="row">
             <div className="column">
               <div className="blue-column">
-                <form onSubmit={this.registerUser}>
+                <form onSubmit={this.loginUser}>
                   <div className="all-input">
                     <h2>
-                      Bienvenue sur
+                      Connectez-vous
                       <span className="title-color"> RooforAll</span>
                     </h2>
-                    <input
-                      placeholder="Entrez votre adresse mail"
-                      onChange={this.handlerUserEmail}
-                      type="text"
-                      name="email"
-                      id="email-input"
-                    />
-
                     <input
                       placeholder="Entrez votre nom d'utilisateur"
                       type="text"
@@ -76,7 +61,7 @@ class Register extends Component {
                     />
                   </div>
                   <button className="btn-register" type="submit">
-                    {titleRegister}
+                    {titleLogin}
                   </button>
                   <div className="btn-login">
                     <a href="gg">Vous avez déjà un compte?</a>
@@ -91,4 +76,4 @@ class Register extends Component {
   }
 }
 
-export default withRouter(Register);
+export default withRouter(Login);

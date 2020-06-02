@@ -1,11 +1,10 @@
-/* .form-input {
-  display: block;
-  height: 100px;
-  margin: 0 auto;
-  margin-top: 20px;
-  padding-top: 30px;
-  width: 100px;
-} */
+
+.blue-column {
+  background-color: #29264e;
+  height: 700px;
+  width: 500px;
+
+}
 
 .form-input {
   background-color: #29264e;
@@ -97,6 +96,9 @@ a:visited {
 
 .some-page-wrapper {
   height: 100%;
+  position: absolute;
+  flex-wrap: wrap;
+  margin: 0 500px;
 }
 
 .row {
@@ -108,15 +110,11 @@ a:visited {
 .column {
   display: flex;
   flex-direction: row;
-  flex-basis: 100%;
-  flex: 1;
+  margin: 0 auto;
+
 }
 
-.blue-column {
-  background-color: #29264e;
-  height: 800px;
-  width: 500px;
-}
+
 .green-column {
   height: 100px;
   width: 400px;

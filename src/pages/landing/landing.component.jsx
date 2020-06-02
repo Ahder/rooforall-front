@@ -1,11 +1,16 @@
 import React from 'react';
+import Directory from '../../components/directory/directory.component';
 
-function Landing () {
-    return (
-        <div>
-            <h2 style={{color: 'red'}}>Toujours plus proche de vous</h2>
-        </div>
-    );
-}
+import './landing.styles.css';
+
+const Landing = () => {
+  return (
+    <>
+      <div className="homepage">
+        <Directory />
+      </div>
+    </>
+  );
+};
 
 export default Landing;
