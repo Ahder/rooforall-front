@@ -4,23 +4,25 @@ import PropTypes from 'prop-types';
 import logo from '../../assets/images/logoRooforAll.svg';
 import './header.styles.scss';
 
-const Header = ({ hidden, handleLogOut }) => {
+const Header = ({ isLogged, handleLogOut }) => {
   console.log('HEADER');
   return (
     <div className="header">
-      <Link className="logo-container" to="/">
-        <img className="logo-container" alt="home" src={logo} />
-      </Link>
+      <img className="logo-container" alt="home" src={logo} />
       <span>RooforAll</span>
 
       <h3>Je choisi où j'habite</h3>
       <h4>Premiere agence de logement pour etudiants etrangers</h4>
 
       <div className="options">
-        <Link className="option" to="/dossiers">
-          Contacts
-        </Link>
-        {!hidden ? (
+        {isLogged ? (
+          <Link className="option" to="/records">
+            Dossiers
+          </Link>
+        ) : (
+          <></>
+        )}
+        {isLogged ? (
           <Link className="option" to="/login">
             Connexion
           </Link>
@@ -38,6 +40,6 @@ const Header = ({ hidden, handleLogOut }) => {
 };
 
 Header.propTypes = {
-  hidden: PropTypes.string.isRequired,
+  isLogged: PropTypes.string.isRequired,
 };
 export default Header;

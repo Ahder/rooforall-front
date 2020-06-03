@@ -7,17 +7,6 @@ const config = {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 };
 
-export const register = async (anUsername, aPassword, anEmail) => {
-  const responseSignUp = await axios.post(`${URL}/api/users/signUp`, {
-    username: anUsername,
-    password: aPassword,
-    email: anEmail,
-  });
-
-  console.log(responseSignUp);
-  return responseSignUp.data;
-};
-
 export const login = async (anUsername, aPassword) => {
   const responseLogin = await axios.post(`${URL}/login`, {
     username: anUsername,
@@ -25,7 +14,6 @@ export const login = async (anUsername, aPassword) => {
   });
 
   token = responseLogin.headers.authorization.substring(7);
-  console.log(typeof token);
 
   localStorage.setItem('token', token);
   token = localStorage.getItem('token');
@@ -36,6 +24,17 @@ export const login = async (anUsername, aPassword) => {
   return responseLogin.data;
 };
 
+export const register = async (anUsername, aPassword, anEmail) => {
+  const responseSignUp = await axios.post(`${URL}/api/users/signUp`, {
+    username: anUsername,
+    password: aPassword,
+    email: anEmail,
+  });
+
+  const logUser = await login(anUsername, aPassword);
+
+  return logUser;
+};
 export const createRecord = async (
   anHabitatType,
   aBudgetMin,
@@ -43,7 +42,7 @@ export const createRecord = async (
   anHabitationSurface,
   aTown
 ) => {
-  const response = await axios.post(
+  return axios.post(
     `${URL}/api/records`,
     {
       draft: false,
@@ -55,8 +54,11 @@ export const createRecord = async (
     },
     config
   );
+};
 
-  console.log(response.data);
+export const getUserInformations = async () => {
+  const userInformations = await axios.get(`${URL}/api/users/getInfo`, config);
+  return userInformations.data;
 };
 
 export const getToken = () => token;

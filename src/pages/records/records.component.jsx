@@ -4,7 +4,8 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import { MessageBar, MessageBarType, PrimaryButton } from 'office-ui-fabric-react';
 import { createRecord } from '../../providers/api/users/UserProvider';
 
 function Records() {
@@ -15,6 +16,8 @@ function Records() {
   const [budgetMin, setBudgetMin] = useState(500);
   const [budgetMax, setBudgetMax] = useState(700);
   const [habitationSurface, setHabitationSurface] = useState(700);
+  const [successRecord, hasSuccessRecord] = useState(false);
+  const [failedRecord, hasFailedRecord] = useState(false);
 
   const [selectedItem, setSelectedItem] = React.useState('');
   const dropdownControlledExampleOptions = [
@@ -30,30 +33,43 @@ function Records() {
   };
   useEffect(() => seHabitatType(selectedItem.text), [selectedItem]);
 
-  const createRecords = () => {
-    console.log(town);
-    const response = createRecord(habitatType, budgetMin, budgetMax, habitationSurface, town);
+  const createRecords = async () => {
+    try {
+      const response = await createRecord(
+        habitatType,
+        budgetMin,
+        budgetMax,
+        habitationSurface,
+        town
+      );
+      hasSuccessRecord(true);
+    } catch (e) {
+      hasFailedRecord(true);
+    }
   };
 
   return (
     <>
       <div className="records">
         <h1 className="records-title">Creer un dossier</h1>
-
+        <h4>
+          Veuillez renseigner les informations suivantes. Nous allons les utiliser pour vos
+          premieres propositions
+        </h4>
         <div style={{ width: '500px', marginTop: '40px' }}>
           <SearchBox
             placeholder="Dans quelle ville voulez-vous allez?"
             onChange={(e) => setTown(e.target.value)}
-            onSearch={(newValue) => console.log('value is ' + newValue)}
-            disableAnimation
+            onSearch={(newValue) => console.log(`value is ${newValue}`)}
+            iconProps={{ styles: { root: { color: '#00bfa6' } } }}
           />
           <div style={{ width: '500px', marginTop: '40px' }}>
             <Slider
               label="Superficie de preference(metre carre)"
               min={0}
-              max={1000}
-              step={10}
-              defaultValue={20}
+              max={200}
+              step={1}
+              defaultValue={0}
               showValue
               snapToStep
               styles={{ titleLabel: { color: '#29264e' }, valueLabel: { color: '#00bfa6' } }}
@@ -61,28 +77,26 @@ function Records() {
             />
           </div>
         </div>
-
         <div style={{ width: '500px', marginTop: '40px' }}>
           <Slider
             label="Budget minimum(€)"
             min={0}
             max={1000}
             step={10}
-            defaultValue={20}
+            defaultValue={0}
             showValue
             snapToStep
             styles={{ titleLabel: { color: '#29264e' }, valueLabel: { color: '#00bfa6' } }}
             ariaValueText={(value) => setBudgetMin(value)}
           />
         </div>
-
         <div style={{ width: '500px', marginTop: '40px' }}>
           <Slider
             label="Budget maximum(€)"
             min={0}
             max={1000}
             step={10}
-            defaultValue={20}
+            defaultValue={220}
             showValue
             snapToStep
             styles={{
@@ -93,7 +107,6 @@ function Records() {
             ariaValueText={(value) => setBudgetMax(value)}
           />
         </div>
-
         <div style={{ marginTop: '40px' }}>
           <Dropdown
             electedKey={selectedItem ? selectedItem.key : undefined}
@@ -101,14 +114,61 @@ function Records() {
             label="Types de logement"
             options={dropdownControlledExampleOptions}
             style={{ color: '#00bfa6', width: '800px' }}
+            styles={{
+              title: { color: '#29264e' },
+              dropdownItem: { color: 'black' },
+              label: { color: '#29264e' },
+              dropdownItemHeader: { color: '#29264e' },
+            }}
             onChange={onChange}
           />
         </div>
-
-        <div className="home-choice">
-          <button className="btn-register-home" onClick={createRecords} type="submit">
-            Creer un dossier
-          </button>
+        {successRecord === true ? (
+          <div style={{ width: '450px', marginTop: '20px' }}>
+            <MessageBar
+              // actions={
+              //   <div>
+              //     <MessageBarButton>Yes</MessageBarButton>
+              //     <MessageBarButton>No</MessageBarButton>
+              //   </div>
+              // }
+              messageBarType={MessageBarType.success}
+              isMultiline={false}
+            >
+              Votre dossier est cree avec succes. Nous revenons vers vous tres vite
+            </MessageBar>
+          </div>
+        ) : (
+          <></>
+        )}
+        {failedRecord ? (
+          <div style={{ width: '450px', marginTop: '20px' }}>
+            <MessageBar
+              messageBarType={MessageBarType.error}
+              isMultiline={false}
+              dismissButtonAriaLabel="Close"
+            >
+              Une erreur est survenue. Veuillez resaissir votre dossier
+            </MessageBar>
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="records-choice">
+          <PrimaryButton
+            onClick={createRecords}
+            style={{
+              background: '#00bfa6',
+              borderStyle: 'none',
+              fontSize: '18px',
+              marginTop: '30px',
+              width: '400px',
+              height: '50px',
+            }}
+            ariaDescription="dossier"
+          >
+            Je cree un dossier
+          </PrimaryButton>
         </div>
       </div>
     </>
