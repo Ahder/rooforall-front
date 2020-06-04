@@ -1,0 +1,74 @@
+.records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 80px;
+  position: absolute;
+  margin-top: 400px;
+  height: 500px;
+}
+
+.records-title {
+  color: #00bfa6;
+  font-size: 50px;
+}
+
+.home-title-span {
+  color: #29264e;
+}
+
+.form {
+  margin-top: 130px;
+  width: 100%;
+}
+
+.input-records {
+  width: 100%;
+  padding: 15px;
+  margin: 50px auto;
+  text-align: center;
+  color: #29264e;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  background: #ddd;
+}
+
+.input-records:focus,
+.input-records:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.records-choice {
+  height: 210px;
+  width: 590px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin: 20px 290px;
+  text-align: center;
+}
+
+.btn-register-home {
+  margin-top: 50px;
+  background-color: #00bfa6;
+  border-radius: 25px;
+  width: 350px;
+  border-style: none;
+  height: 60px;
+  margin-left: 100px;
+  margin-right: 100px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.btn-register-home:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=records.styles.css.map */
