@@ -1,5 +1,6 @@
 import React from 'react';
 import './menu-item.styles.css';
+
 const MenuItem = ({ title, imageUrl, description, percent }) => {
   return (
     <>

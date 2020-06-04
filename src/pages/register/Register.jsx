@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Register.scss';
 import { Link, withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { register } from '../../providers/api/users/UserProvider';
 
 const errorHandler = require('./register-utils');
@@ -32,10 +33,10 @@ class Register extends Component {
     const { userName, userEmail, userPassword } = this.state;
     event.preventDefault();
 
-    const response = await register(userName, userPassword, userEmail);
-    console.log(response.data.username);
+    const user = await register(userName, userPassword, userEmail);
+    console.log(user.username);
     console.log(this.props);
-    history.push('/home', response.data.username);
+    history.push('/home', user.username);
   };
 
   render() {
@@ -46,7 +47,7 @@ class Register extends Component {
           <div className="row">
             <div className="column">
               <div className="blue-column">
-                <form onSubmit={this.registerUser}>
+                <form className="form" onSubmit={this.registerUser}>
                   <div className="all-input">
                     <h2>
                       Bienvenue sur
@@ -90,5 +91,9 @@ class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default withRouter(Register);

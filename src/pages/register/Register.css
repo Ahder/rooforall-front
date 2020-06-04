@@ -22,7 +22,7 @@ h2 {
   font-family: "Quicksand", sans-serif;
 }
 
-form {
+.form {
   margin-top: 130px;
 }
 
@@ -51,6 +51,7 @@ input[type=password]:focus {
   background-color: #00bfa6;
   border-radius: 25px;
   width: 350px;
+  border-style: none;
   height: 50px;
   margin-left: 100px;
   margin-right: 100px;

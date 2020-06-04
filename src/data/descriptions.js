@@ -16,21 +16,27 @@ export const descriptions = [
   {
     title: 'Choisisser vos logements',
     image: findLogo,
-    description: 'Gagnez du temps hdhdhdhdhdhdhdhdhdhdhdhdhdhdhd',
+    description:
+      'Nous prenons vos demandes, et nous allons contacter les proprietaires dans toute la phrase pour vous offir tous les' +
+      'choix possibles qui vont correspondre a vos besoins',
     percent: '100%',
   },
 
   {
     title: 'Retrouvez vos dossiers partout',
     image: multiLogo,
-    description: 'Gagnez du temps hdhdhdhdhdhdhdhdhdhdhdhdhdhdhd',
+    description:
+      'Nous avons 3 plateformes ou vous pouvez a tout instant retrouvez vos dossiers. Creer votre dossier depuis notre plateforme' +
+      'Web et retrouvez les sur vos smartphone Android, iOS et Tablettes',
     percent: 3,
   },
 
   {
     title: "On s'occupe de tout pour vous",
     image: workLogo,
-    description: 'Gagnez du temps hdhdhdhdhdhdhdhdhdhdhdhdhdhdhd',
+    description:
+      "RooforAll, est une equipe d'etudiants mobilises activement, qui a la maitrise de tout l'environnement immobilier aussi bien " +
+      'pour les residences etudiantes que pour les residences privees',
     percent: 10,
   },
 ];

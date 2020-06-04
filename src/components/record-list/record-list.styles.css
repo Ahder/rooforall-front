@@ -1,22 +1,21 @@
-.home {
+.home-record-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 80px;
+  padding: 40px 80px;
   position: absolute;
-  margin-top: 450px;
+  margin-top: 350px;
   height: 300px;
-
-
+  width: 900px;
 }
 
-.home-title {
+.home-title-record {
   color: #00bfa6;
   font-size: 50px;
 }
+
 .home-title-span {
   color: #29264e;
-
 }
 
 .home-choice {
@@ -29,7 +28,8 @@
   text-align: center;
 }
 
-
 .btn-register-home:focus {
   outline: none;
 }
+
+/*# sourceMappingURL=record-list.styles.css.map */
