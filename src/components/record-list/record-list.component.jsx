@@ -24,6 +24,7 @@ class RecordList extends Component {
 
   render() {
     const { records } = this.state;
+    console.log(records);
     return (
       <>
         <div className="home-record-item">
@@ -35,9 +36,8 @@ class RecordList extends Component {
               <GridListTile key="Subheader" cols={2} style={{ height: '100px', width: '900px' }}>
                 <ListSubheader component="div" />
               </GridListTile>
-              {records.map((record) => (
+              {records.map((record, index) => (
                 <GridListTile key={record.id} style={{ marginLeft: '10px', height: '100px' }}>
-                  {/** <img src={tile.img} alt={tile.title} />* */}
                   <GridListTileBar
                     title={record.habitatType}
                     subtitle={<span>Ville: {record.town}</span>}

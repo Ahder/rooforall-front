@@ -8,7 +8,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { MessageBar, MessageBarType, PrimaryButton } from 'office-ui-fabric-react';
 import { createRecord } from '../../providers/api/users/UserProvider';
 
-function Records(props) {
+function Records({ history }) {
   initializeIcons('https://static2.sharepointonline.com/files/fabric/assets/icons/');
 
   const [town, setTown] = useState('');
@@ -47,8 +47,6 @@ function Records(props) {
       hasFailedRecord(true);
     }
   };
-
-  const { history } = props;
 
   return (
     <>
@@ -127,16 +125,7 @@ function Records(props) {
         </div>
         {successRecord === true ? (
           <div style={{ width: '450px', marginTop: '20px' }}>
-            <MessageBar
-              // actions={
-              //   <div>
-              //     <MessageBarButton>Yes</MessageBarButton>
-              //     <MessageBarButton>No</MessageBarButton>
-              //   </div>
-              // }
-              messageBarType={MessageBarType.success}
-              isMultiline={false}
-            >
+            <MessageBar messageBarType={MessageBarType.success} isMultiline={false}>
               Votre dossier est cree avec succes. Nous revenons vers vous tres vite
             </MessageBar>
             <PrimaryButton
@@ -171,6 +160,7 @@ function Records(props) {
         ) : (
           <></>
         )}
+
         <div className="records-choice">
           <PrimaryButton
             onClick={createRecords}

@@ -24,16 +24,8 @@ class App extends React.Component {
     this.setState({ token: getToken() });
   }
 
-  logout = () => {
-    this.setState((prevState) => {
-      localStorage.removeItem('token');
-      console.log(`OLD TOKEN ${localStorage.getItem('token')} `);
-      console.log(this.state.token);
-    });
-  };
-
-  componentWillMount(): void {
-    console.log('Unmount');
+  componentWillUnmount(): void {
+    this.setState({ token: null });
   }
 
   render() {
@@ -42,7 +34,7 @@ class App extends React.Component {
     const { token } = this.state;
     return (
       <div className="app-class">
-        <Header isLogged={token} handleLogOut={this.logout} />
+        <Header isLogged={token} />
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/records" component={Records} />

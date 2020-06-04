@@ -15,25 +15,26 @@ function Home({ history, location }) {
 
   return (
     <>
+      <PrimaryButton
+        onClick={() => {
+          localStorage.removeItem('token');
+          history.push('/');
+        }}
+        style={{
+          marginTop: '40px',
+          borderStyle: 'none',
+          width: '250px',
+          background: 'red',
+          marginLeft: '500px',
+        }}
+        ariaDescription="dossier"
+      >
+        Deconnexion
+      </PrimaryButton>
       <div className="home">
         <h1 className="home-title">
           <span className="home-title-span">Hello</span> {localStorage.getItem('username')}
         </h1>
-        <PrimaryButton
-          onClick={goToListRecords}
-          style={{
-            background: 'white',
-            border: '1px solid #00bfa6',
-            borderColor: '#00bfa6',
-            marginTop: '40px',
-            width: '250px',
-            color: '#00bfa6',
-          }}
-          ariaDescription="dossier"
-        >
-          Listes des dossiers
-        </PrimaryButton>
-
         <PrimaryButton
           onClick={goToRecordsPage}
           style={{

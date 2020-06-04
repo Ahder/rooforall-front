@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { login } from '../../providers/api/users/UserProvider';
 import PropTypes, { any } from 'prop-types';
 import { getToken } from '../../providers/api/users/UserProvider';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
 class Login extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class Login extends Component {
       userName: '',
       userEmail: '',
       token: '',
+      isLog: false,
+      isFailed: false,
     };
   }
 
@@ -27,13 +30,18 @@ class Login extends Component {
     const { history } = this.props;
     const { userName, userPassword } = this.state;
     event.preventDefault();
-    const user = await login(userName, userPassword);
-    console.log(user);
-    console.log(this.props);
-    history.push('/home', user);
+
+    try {
+      const user = await login(userName, userPassword);
+      this.setState({ islog: true });
+      history.push('/home', user);
+    } catch (e) {
+      this.setState({ isFailed: true });
+    }
   };
 
   render() {
+    const { isLog, isFailed } = this.state;
     const titleLogin = ' Je me connecte';
     return (
       <>
@@ -62,6 +70,17 @@ class Login extends Component {
                       onChange={this.handlerUserPassword}
                     />
                   </div>
+                  {isFailed ? (
+                    <MessageBar
+                      messageBarType={MessageBarType.error}
+                      isMultiline={false}
+                      dismissButtonAriaLabel="Close"
+                    >
+                      Une erreur est survenue. Vos identifiants semblent incorrects
+                    </MessageBar>
+                  ) : (
+                    <></>
+                  )}
                   <button className="btn-register" type="submit">
                     {titleLogin}
                   </button>

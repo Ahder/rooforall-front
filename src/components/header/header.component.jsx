@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import logo from '../../assets/images/logoRooforAll.svg';
 import './header.styles.scss';
 
-const Header = ({ isLogged, handleLogOut }) => {
-  console.log('HEADER');
+const Header = ({ isLogged }) => {
+  const [isLoggedIn, setLogged] = useState(false);
+  const logout = () => {
+    localStorage.removeItem('token');
+    console.log(`OLD TOKEN ${localStorage.getItem('token')} `);
+    console.log(this.state.token);
+    setLogged(false);
+  };
+
   return (
     <div className="header">
       <img className="logo-container" alt="home" src={logo} />
@@ -15,19 +22,16 @@ const Header = ({ isLogged, handleLogOut }) => {
       <h4>Premiere agence de logement pour etudiants etrangers</h4>
 
       <div className="options">
-        {isLogged ? (
-          <Link className="option" to="/records">
-            Dossiers
-          </Link>
-        ) : (
-          <></>
-        )}
-        {isLogged ? (
+        <Link className="option" to="/records">
+          Dossiers
+        </Link>
+
+        {!isLoggedIn ? (
           <Link className="option" to="/login">
             Connexion
           </Link>
         ) : (
-          <Link className="option" to="/" onClick={handleLogOut}>
+          <Link className="option" to="/" onClick={logout}>
             Deconnexion
           </Link>
         )}
@@ -38,7 +42,6 @@ const Header = ({ isLogged, handleLogOut }) => {
     </div>
   );
 };
-
 Header.propTypes = {
   isLogged: PropTypes.string.isRequired,
 };
