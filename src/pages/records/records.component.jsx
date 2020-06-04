@@ -8,7 +8,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { MessageBar, MessageBarType, PrimaryButton } from 'office-ui-fabric-react';
 import { createRecord } from '../../providers/api/users/UserProvider';
 
-function Records() {
+function Records(props) {
   initializeIcons('https://static2.sharepointonline.com/files/fabric/assets/icons/');
 
   const [town, setTown] = useState('');
@@ -47,6 +47,8 @@ function Records() {
       hasFailedRecord(true);
     }
   };
+
+  const { history } = props;
 
   return (
     <>
@@ -137,6 +139,21 @@ function Records() {
             >
               Votre dossier est cree avec succes. Nous revenons vers vous tres vite
             </MessageBar>
+            <PrimaryButton
+              onClick={() => history.push('/record-list')}
+              style={{
+                background: '#29264e',
+                borderStyle: 'none',
+                fontSize: '18px',
+                marginTop: '30px',
+                marginLeft: '40px',
+                width: '300px',
+                height: '50px',
+              }}
+              ariaDescription="dossier"
+            >
+              Retrouvez vos dossiers
+            </PrimaryButton>
           </div>
         ) : (
           <></>
